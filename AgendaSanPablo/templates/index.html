@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>Agenda San Pablo</title>
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/materialize.min.css'%}" media="screen,projection">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/general.css'%}" media="screen,projection">
+	<script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js'  %}"></script>
+	<script type="text/javascript" src="{% static 'js/materialize.min.js'  %}"></script>
+	<script type="text/javascript" src="{% static 'js/general.js'  %}"></script>
+</head>
+<body>
+<nav class="light-blue darken-4">
+	<div class="nav-wrapper">
+		<a href="#" class="brand-logo center">Agenda San Pablo</a>
+	</div>
+</nav>
+<div class="row">
+	<h1 class="center-align"><img class="responsive-img" src="{% static 'img/logo.png' %}" width="20%"></h1>
+</div>
+<div class="container">
+	<div class="row">
+		<form  class="col s12 m6 l6 offset-m3 offset-l3" action="/login/" method="POST">{% csrf_token %}
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">account_circle</i>
+					<input type="text" name="inp_usuario" id="inp_usuario" required>
+					<label for="inp_usuario">Usuario</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">lock_outline</i>
+					<input id="inp_pass" name="inp_pass" type="password" required>
+					<label for="inp_pass">Password</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12 m6 l6 offset-m3 offset-l3">
+					<button class="btn waves-effect waves-light col s12 light-blue darken-4" type="submit" name="action">Submit
+    					<i class="material-icons right">send</i>
+  					</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="s12 m6 l6 offset-m3 offset-l3">
+					<a href="{% url 'registro' %}" class="waves-effect waves-light btn-flat col s12 m6 l6 offset-m3 offset-l3 center-align">Registrarse</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+</body>
+</html>

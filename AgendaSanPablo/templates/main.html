@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="row">
+	<h2 class="center-align">Bienvenido: {{ request.session.userNombre }} </h2>
+</div>
+<div class="row">
+	<p class="flow-text center-align">En tu Agenda SanPablo podras calcular tus notas ver tu horario y calificar a tus profesores, ademas muy pronto tendras nuevas funcionalidades a tu disposicion</p>
+</div>
+<div class="row">
+	<div class="slider">
+	  <ul class="slides" style="margin-top:10vh;">
+	    <li>
+	      <img class="responsive-img" width="80%" src="http://ucsp.edu.pe/wp-content/uploads/2017/06/Banner-horizontal_civil.jpg"> <!-- random image -->
+	    </li>
+	    <li>
+	      <img src="http://ucsp.edu.pe/wp-content/uploads/2017/06/Banner-horizontal_CC.jpg"> <!-- random image -->
+	    </li>
+	    <li>
+	      <img src="http://ucsp.edu.pe/wp-content/uploads/2017/06/Banner-horizontal-10.jpg"> <!-- random image -->
+	    </li>
+	    <li>
+	      <img src="http://ucsp.edu.pe/wp-content/uploads/2017/06/Banner-horizontal-8.jpg"> <!-- random image -->
+	    </li>
+	  </ul>
+	</div>
+
+	<script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js'  %}"></script>
+	<script type="text/javascript" src="{% static 'js/materialize.min.js'  %}"></script>
+	<script type="text/javascript" src="{% static 'js/general.js'  %}"></script>
+	<script type="text/javascript">
+	  $(document).ready(function(){
+	    $('.slider').slider({fullWidth: true, indicators: true});
+	  })
+	</script>
+</div>
+{% endblock %}

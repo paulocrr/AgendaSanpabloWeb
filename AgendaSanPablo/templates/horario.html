@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% csrf_token %}
+{% load staticfiles %}
+{% block content %}
+ <script type="text/javascript" src="{% static 'js/verHorario_js.js' %}"></script>
+<div class="row">
+	<h1>Horario de {{ request.session.userNombre }}</h1>
+</div>
+<div class="row">
+	 <blockquote>
+      Puedes agrear tus cursos con el boton + de la parte inferior
+    </blockquote>
+</div>
+<div class="row" id="dias">
+</div>
+<div class="fixed-action-btn" style="margin-bottom: 2%; margin-right: 2%;">
+	<a class="btn-floating btn-large blue accent-3" href="/inicio/agregarHorario/">
+		<i class="large material-icons">add</i>
+	</a>
+</div>
+{% endblock content %}
