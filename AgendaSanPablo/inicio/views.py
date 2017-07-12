@@ -28,8 +28,17 @@ def getDias(request):
 	data = cursor.fetchall()
 	cursor.close()
 	return HttpResponse(json.dumps(data), content_type='application/json')
+
+def getSpecificCursos(request, ciclo, carrera):
+	cursor = connection.cursor()
+	cursor.execute('''SELECT * FROM tcursos WHERE ciclo=''' + ciclo+ ''' AND carrera ='''+carrera)
+	data = cursor.fetchall()
+	cursor.close()
+	return HttpResponse(json.dumps(data), content_type='application/json')
+
 def getCursosPorDia(request):
-	idDia = request.POST['id_dia'];
+	idDia = request.POST.get['id_dia'];
+	print(idDia + str(idDia))
 	idUser = request.session['idUser'];
 	cursor = connection.cursor()
 	cursor.execute('''SELECT thorarios.id,nombre,dia,hora_inicio,hora_fin FROM thorarios JOIN tcursos ON tcursos.id=thorarios.id_curso JOIN tdia ON tdia.id=thorarios.id_curso AND tdia.id=%s AND thorarios.id_usuario=%s''',[idDia,idUser])
@@ -38,7 +47,7 @@ def getCursosPorDia(request):
 	return HttpResponse(json.dumps(data), content_type='application/json')
 def getCursos(request):
 	cursor = connection.cursor()
-	cursor.execute('''SELECT * FROM tcursos''')
+	cursor.execute('''SELECT * FROM tcursos WHERE ciclo=1 AND carrera =1''')
 	data = cursor.fetchall()
 	cursor.close()
 	return HttpResponse(json.dumps(data), content_type='application/json')
