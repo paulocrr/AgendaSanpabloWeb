@@ -5,31 +5,27 @@
 <div class="row">
 	<h1 class="center-align">Agregar Curso a su Horario</h1>
 </div>
-<div style="padding-left: 3em;padding-right: 3em;" class="row">
+<div class="row">
 	<form method="POST" action="/inicio/insertCurso/" class="col s12 m12 l12">{% csrf_token %}
-		<div class="row" style="margin-top: 5vh;">
-		<div class="input-field col s12 m4 l4 push-m1 push-l1">
+		<div class="input-field col s12 m6 l6">
 	    	<select id="inp_curso" name="inp_curso"> </select>
 	    	<label>Seleccione Curso</label>
 	  	</div>
-	  	<div class="input-field col s12 m4 l4 push-m3 push-l3">
+	  	<div class="input-field col s12 m6 l6">
 	    	<select id="inp_dia" name="inp_dia"></select>
 	    	<label>Seleccione Dia</label>
 	  	</div>
-		</div>
-		<div class="row">
-	  	<div class="input-field col s12 m4 l4 push-m1 push-l1">
+	  	<div class="input-field col s12 m6 l6">
 		    <label for="inp_horaInicio">Hora Inicio</label>
 		    <input id="inp_horaInicio" name="inp_horaInicio" class="timepicker" type="time">
-			</div>
-			<div class="input-field col s12 m4 l4 push-m3 push-l3">
-			    <label for="inp_horaFin">Hora Fin</label>
-			    <input id="inp_horaFin" name="inp_horaFin" class="timepicker" type="time">
-			</div>
+		</div>
+		<div class="input-field col s12 m6 l6">
+		    <label for="inp_horaFin">Hora Fin</label>
+		    <input id="inp_horaFin" name="inp_horaFin" class="timepicker" type="time">
 		</div>
 		<div class="row">
-			<div class="col s12 m6 l6 offset-m3 offset-l3" style="margin-top: 15vh;">
-				<button class="btn waves-effect waves-light cyan darken-4 col s12" type="submit" name="action">Submit
+			<div class="col s12 m6 l6 offset-m3 offset-l3">
+				<button class="btn waves-effect waves-light light-blue darken-4 col s12" type="submit" name="action">Submit
 			    	<i class="material-icons right">send</i>
 			  	</button>
 			</div>

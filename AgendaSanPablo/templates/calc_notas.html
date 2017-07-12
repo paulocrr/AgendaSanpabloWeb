@@ -6,25 +6,25 @@
 	<h1 class="center-align">Calculadora de Notas</h1>
 </div>
 <div class="row">
-	 <blockquote>
-      Da click en el botón agregar aumentar la cantidad de campos y click en borrar para eliminar el último campo agregado
-    </blockquote>
+	<blockquote>
+      		De click en el boton agregar aumentar la cantidad del campos puede dejar campos en blanco para que no se tomaran en cuenta al momento del calculo
+    	</blockquote>
 </div>
 <div class="row">
-	<div class="col s12 m3 l3 offset-m3 offset-l3">
+	<div class="col s12 m6 l6 offset-m3 offset-l3">
 		<a id="add_inputs" class="waves-effect waves-light btn blue col s12"><i class="material-icons right">add</i>Agregar</a>
 	</div>
-	<div class="col s12 m3 l3">
+	<!--<div class="col s12 m3 l3">
 		<a id="delete_inputs" class="waves-effect waves-light btn blue col s12"><i class="material-icons right">delete</i>Borrar</a>
-	</div>
+	</div>-->
 </div>
 <div id="contenido">
 	<div id='inp_0' class='row'>
-		<div class='input-field col s4 push-s1'>
+		<div class='input-field col s6'>
 			<input id='not_0' type='number'>
 				<label for='not_"+ultimo+"'>Nota</label>
 		</div>
-		<div class='input-field col s4 push-s2'>
+		<div class='input-field col s6'>
 			<input id='pes_0' type='number'>
 			<label for='pes_"+ultimo+"'>Peso</label>
 		</div>
@@ -36,6 +36,6 @@
 	</div>
 </div>
 <div id="resultado">
-
+	
 </div>
 {% endblock content %}
