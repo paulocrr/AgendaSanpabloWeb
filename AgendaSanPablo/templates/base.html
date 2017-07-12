@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/general.css'%}" media="screen,projection">
   <link rel="stylesheet" type="text/css" href="{% static 'css/materialize.clockpicker.css'%}" media="screen,projection">
   <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js'  %}"></script>
- 
+
   <script type="text/javascript" src="{% static 'js/materialize.min.js'  %}"></script>
   <script type="text/javascript" src="{% static 'js/general.js'  %}"></script>
   <script type="text/javascript" src="{% static 'js/modernizr.js' %}"></script>
@@ -21,12 +21,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-<nav class="light-blue darken-4">
+<nav style="padding-bottom: 1em;" class="light-blue darken-3">
   <div class="nav-wrapper">
     <a href="/inicio/" class="brand-logo"><img src="{% static 'img/logo.png' %}" class="reponsive-img" width="50%"></a>
-    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+ 		<!-- <a href="#" class="brand-logo right">Hola, {{ request.session.userNombre }}</a> -->
+		<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
-      <li><a href="/inicio/">Hola: {{ request.session.userNombre }}</a></li>
       <li><a href="/inicio/">Inicio</a></li>
       <li><a href="{% url 'horario'%}">Horario</a></li>
       <li><a href="{% url 'calc_notas' %}">Calculadora de Notas</a></li>
@@ -47,10 +47,10 @@
 {% block content %}
 {% endblock %}
 </main>
-<footer class="page-footer light-blue darken-4">
+<footer class="page-footer light-blue darken-3">
   <div class="footer-copyright">
-    <div class="container">
-    © 2017 Krishco Copyright
+    <div class="row right">
+    	© 2017
     </div>
   </div>
 </footer>

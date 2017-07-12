@@ -3,12 +3,12 @@
 {% load staticfiles %}
 {% block content %}
  <script type="text/javascript" src="{% static 'js/verHorario_js.js' %}"></script>
-<div class="row">
+<div style="margin-left:1.5em;" class="row">
 	<h1>Horario de {{ request.session.userNombre }}</h1>
 </div>
 <div class="row">
 	 <blockquote>
-      Puedes agrear tus cursos con el boton + de la parte inferior
+      Puedes agregar tus cursos con el botón + de la parte inferior
     </blockquote>
 </div>
 <div class="row" id="dias">

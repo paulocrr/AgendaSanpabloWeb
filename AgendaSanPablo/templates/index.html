@@ -21,6 +21,9 @@
 </div>
 <div class="container">
 	<div class="row">
+		<h6 class="red-text center">{{ text }}</h6>
+	</div>
+	<div class="row">
 		<form  class="col s12 m6 l6 offset-m3 offset-l3" action="/login/" method="POST">{% csrf_token %}
 			<div class="row">
 				<div class="input-field col s12">
@@ -38,7 +41,7 @@
 			</div>
 			<div class="row">
 				<div class="col s12 m6 l6 offset-m3 offset-l3">
-					<button class="btn waves-effect waves-light col s12 light-blue darken-4" type="submit" name="action">Submit
+					<button class="btn waves-effect waves-light col s12 light-blue darken-4" type="submit" name="action">Ingresar
     					<i class="material-icons right">send</i>
   					</button>
 				</div>

@@ -16,6 +16,10 @@ def index(request):
 
 def Login(request):
 	next = request.GET.get('next','/inicio/')
+	context = {
+		'text':"usuario inválido, por favor verifique su contraseña y/o usuario",
+	}
+	template = loader.get_template('index.html')
 	if request.method == "POST":
 		username = request.POST['inp_usuario'];
 		password = request.POST['inp_pass'];
@@ -30,7 +34,9 @@ def Login(request):
 			else:
 				HttpResponse("Usuario Inactivo")
 		else:
-			return HttpResponseRedirect("/")
+
+			return HttpResponse(template.render(context, request))
+			#return HttpResponseRedirect("/")
 	return render(request,"index.html",{'redirect_to':next})
 # Create your views here.
 def Logout(request):
@@ -55,5 +61,3 @@ def success(request):
 	template = loader.get_template('exito.html')
 	context = {}
 	return HttpResponse(template.render(context,request))
-
-
