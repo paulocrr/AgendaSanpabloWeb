@@ -13,24 +13,24 @@
 	<div class="slider">
 	  <ul class="slides" style="margin-top:10vh;">
 	    <li>
-	      <img src="http://liderazgo.ucsp.edu.pe/wp-content/uploads/2017/02/Banner-web.jpg"> <!-- random image -->
+	      <img src="{% static 'img/imagen1.jpg' %}"> <!-- random image -->
 	    </li>
 			<li>
-				<img class="responsive-img" width="80%" src="http://ucsp.edu.pe/iet/extension/wp-content/uploads/2016/03/Banner-horizontal-18-1024x267.jpg"> <!-- random image -->
+				<img class="responsive-img" width="80%" src="{% static 'img/imagen2.jpg' %}"> <!-- random image -->
 			</li>
 	    <li>
-	      <img src="http://ucsp.edu.pe/wp-content/uploads/2017/06/Banner-horizontal-10.jpg"> <!-- random image -->
+	      <img src="{% static 'img/imagen3.jpg' %}"> <!-- random image -->
 	    </li>
 	    <li>
-	      <img src="http://ucsp.edu.pe/wp-content/uploads/2017/06/Banner-horizontal-8.jpg"> <!-- random image -->
+	      <img src="{% static 'img/imagen4.jpg' %}"> <!-- random image -->
 	    </li>
 	  </ul>
 	</div>
 
 <style>
-.slider .indicators .indicator-item.active {
-    background-color: #42a5f5;
-}
+	.slider .indicators .indicator-item.active {
+	    background-color: #42a5f5;
+	}
 </style>
 	<script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js'  %}"></script>
 	<script type="text/javascript" src="{% static 'js/materialize.min.js'  %}"></script>
