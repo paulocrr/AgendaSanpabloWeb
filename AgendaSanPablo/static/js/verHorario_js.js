@@ -35,7 +35,7 @@ function getCursosxDia(idDia){
 				$("#dia_"+idDia).append("<li class='collection-item'><div>Genial Tienes el Dia Libre</div></li>");
 			}else{
 				for(var i =0;i<json.length;i++){
-					$("#dia_"+idDia).append("<li class='collection-item'><div>Curso: "+json[i][1]+" - De "+json[i][3]+" A "+json[i][4]+"<a href='#!' class='secondary-content'><i class='material-icons blue-text'>edit</i></a></div></li>");
+					$("#dia_"+idDia).append("<li class='collection-item'><div>Curso: "+json[i][1]+" - De "+json[i][3]+" A "+json[i][4]+"<a href='/inicio/borrarHorario/"+json[i][0]+"' class='secondary-content'><i class='material-icons blue-text'>delete</i></a></div></li>");
 				}
 			}
 		}

@@ -76,10 +76,16 @@ def getTareas(request):
 	cursor.close()
 	return HttpResponse(json.dumps(data), content_type='application/json')
 
+def borrarHorario(request, id):
+	cursor = connection.cursor()
+	cursor.execute('''DELETE FROM thorarios WHERE id='''+id)
+	return HttpResponseRedirect("/inicio/horario/")
+	
 def borrarTarea(request, id):
 	cursor = connection.cursor()
 	cursor.execute('''DELETE FROM tareas WHERE id='''+id)
 	return HttpResponseRedirect("/inicio/tareas/")
+
 def getCursos(request):
 	cursor = connection.cursor()
 	cursor.execute('''SELECT * FROM tcursos WHERE ciclo=1 AND carrera =1''')

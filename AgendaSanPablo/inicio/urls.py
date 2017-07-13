@@ -3,6 +3,7 @@ from . import views
 urlpatterns = [
 	url(r'^$',views.index, name="index"),
 	url(r'^horario/$', views.horario, name="horario"),
+	url(r'^borrarHorario/(?P<id>[0-9]+)/$',views.borrarHorario, name = 'borrarHorario'),
 	url(r'^agregarHorario/$', views.agregarCurso, name="agregarCurso"),
 	url(r'^agregarTarea/$', views.agregarTarea, name="agregarTarea"),
 	url(r'^calc_notas/$', views.calc_notas, name="calc_notas"),
