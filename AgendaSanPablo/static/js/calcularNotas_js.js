@@ -8,7 +8,6 @@ function agregar(){
 function borrar(){
 	ultimo--;
 	$("#inp_"+ultimo).remove();
-	console.log(ultimo);
 }
 function suma(){
 	for (var i = 0; i < ultimo; i++) {

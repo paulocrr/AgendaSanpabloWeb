@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% csrf_token %}
+{% load staticfiles %}
+{% block content %}
+<script type="text/javascript" src="{% static 'js/ver_tareas.js' %}"></script>
+<div style="margin-left:1.5em;" class="row">
+	<h1>Tus cosas por hacer:</h1>
+</div>
+
+<div class="row">
+  <ul id ="pendientes" class="collapsible col s12 m10 l10 push-m1 push-l1 " data-collapsible="accordion">
+  </ul>
+</div>
+<div class="fixed-action-btn" style="margin-bottom: 2%; margin-right: 2%;">
+	<a class="btn-floating btn-large blue accent-3" href="/inicio/agregarTarea/">
+		<i class="large material-icons">add</i>
+	</a>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<script type="text/javascript" src="{% static 'js/tareas.js' %}"></script>
+
+<div class="row">
+	<h1 class="center-align">Agrega tus tareas aquí</h1>
+</div>
+<div class="row">
+	<form method="POST" action="/inicio/insertTarea/" class="col s12 m12 l12">{% csrf_token %}
+		<div class="row">
+			<div class="input-field col s12 m4 l4 offset-m2 offset-l2">
+				<select id="curso" name="curso">
+				</select>
+				<label>Seleccione un curso</label>
+			</div>
+			<div class="input-field col s12 m4 l4">
+        <input id="fecha" name="fecha" type="date" class="datepicker">
+        <label for="fecha">¿Para cuándo es?</label>
+			</div>
+		</div>
+		<div class="input-field col s12 m8 l8 offset-m2 offset-l2">
+      <textarea id="textarea1" name="textarea1" class="materialize-textarea" data-length="150"></textarea>
+      <label for="textarea1">Escribe aquí lo que tienes que hacer: </label>
+		</div>
+		<div class="row">
+			<div class="col s12 m6 l6 offset-m3 offset-l3">
+				<div class="col s12 m6 l6 offset-m3 offset-l3" style="margin-top: 15vh;">
+				<button class="btn waves-effect waves-light blue darken-4 col s12" type="submit" name="action">Agregar<i class="material-icons right">send</i>
+				</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+{% endblock content %}

@@ -6,6 +6,7 @@ from django.template import loader
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.db import connection
+from django.core.serializers.json import DjangoJSONEncoder
 import json
 
 @login_required
@@ -22,6 +23,7 @@ def agregarCurso(request):
 	template = loader.get_template('agregar_horario.html');
 	context = {}
 	return HttpResponse(template.render(context,request));
+
 def getDias(request):
 	cursor = connection.cursor()
 	cursor.execute('''SELECT * FROM tdia''')
@@ -36,6 +38,24 @@ def getSpecificCursos(request, ciclo, carrera):
 	cursor.close()
 	return HttpResponse(json.dumps(data), content_type='application/json')
 
+def getCursosPersonales(request):
+	cursor = connection.cursor()
+	idUser = request.session['idUser'];
+	cursor.execute('''SELECT DISTINCT tcursos.id,nombre FROM thorarios JOIN tcursos ON tcursos.id=thorarios.id_curso AND thorarios.id_usuario=%s''',[idUser])
+	data = cursor.fetchall()
+	cursor.close()
+	return HttpResponse(json.dumps(data), content_type='application/json')
+
+def tareas(request):
+	template = loader.get_template('tareas.html')
+	context = {}
+	return HttpResponse(template.render(context, request))
+
+def agregarTarea(request):
+	template = loader.get_template('agregarTarea.html')
+	context = {}
+	return HttpResponse(template.render(context, request))
+
 def getCursosPorDia(request):
 	idDia = request.POST.get('id_dia');
 	idUser = request.session['idUser'];
@@ -44,6 +64,22 @@ def getCursosPorDia(request):
 	data = cursor.fetchall()
 	cursor.close()
 	return HttpResponse(json.dumps(data), content_type='application/json')
+def datetime_handler(x):
+	if isinstance(x, datetime.datetime):
+	    return x.isoformat()
+	raise TypeError("Unknown type")
+def getTareas(request):
+	idUser = request.session['idUser']
+	cursor = connection.cursor()
+	cursor.execute('''SELECT tareas.id,tarea,fecha,tcursos.nombre FROM tareas JOIN tcursos on tcursos.id=tareas.id_curso AND id_usuario=%s''',[idUser])
+	data = cursor.fetchall()
+	cursor.close()
+	return HttpResponse(json.dumps(data), content_type='application/json')
+
+def borrarTarea(request, id):
+	cursor = connection.cursor()
+	cursor.execute('''DELETE FROM tareas WHERE id='''+id)
+	return HttpResponseRedirect("/inicio/tareas/")
 def getCursos(request):
 	cursor = connection.cursor()
 	cursor.execute('''SELECT * FROM tcursos WHERE ciclo=1 AND carrera =1''')
@@ -61,6 +97,16 @@ def insertCurso(request):
 		#datos = [idCurso,idDia,idUsuario,horaInicio,horaFin]
 		cursor.execute('''INSERT INTO `agendadb`.`thorarios`(`id_curso`,`id_dia`,`hora_inicio`,`hora_fin`,`id_usuario`)VALUES(%s,%s,%s,%s,%s);''',[idCurso,idDia,horaInicio,horaFin,idUsuario])
 	return HttpResponseRedirect("/inicio/horario/")
+def insertTarea(request):
+	if request.method == "POST":
+		cursor = connection.cursor()
+		idUsuario = request.session['idUser']
+		idCurso = request.POST.get('curso',2)
+		fecha = request.POST.get('fecha')
+		tarea = request.POST.get('textarea1')
+		cursor.execute('''INSERT INTO `agendadb`.`tareas`(`id_curso`,`tarea`,`fecha`,`id_usuario`)VALUES(%s,%s,%s,%s);''',[idCurso,tarea,fecha,idUsuario])
+	return HttpResponseRedirect("/inicio/tareas/")
+
 def calc_notas(request):
 	template = loader.get_template('calc_notas.html')
 	context = {}
