@@ -60,7 +60,7 @@ def getCursosPorDia(request):
 	idDia = request.POST.get('id_dia');
 	idUser = request.session['idUser'];
 	cursor = connection.cursor()
-	cursor.execute('''SELECT thorarios.id,nombre,dia,hora_inicio,hora_fin FROM thorarios JOIN tcursos ON tcursos.id=thorarios.id_curso JOIN tdia ON tdia.id=thorarios.id_curso AND thorarios.id_dia=%s AND thorarios.id_usuario=%s''',[idDia,idUser])
+	cursor.execute('''SELECT thorarios.id,nombre,dia,hora_inicio,hora_fin FROM thorarios JOIN tcursos ON tcursos.id=thorarios.id_curso JOIN tdia ON tdia.id=thorarios.id_dia AND thorarios.id_dia=%s AND thorarios.id_usuario=%s''',[idDia,idUser])
 	data = cursor.fetchall()
 	cursor.close()
 	return HttpResponse(json.dumps(data), content_type='application/json')
@@ -80,7 +80,7 @@ def borrarHorario(request, id):
 	cursor = connection.cursor()
 	cursor.execute('''DELETE FROM thorarios WHERE id='''+id)
 	return HttpResponseRedirect("/inicio/horario/")
-	
+
 def borrarTarea(request, id):
 	cursor = connection.cursor()
 	cursor.execute('''DELETE FROM tareas WHERE id='''+id)
